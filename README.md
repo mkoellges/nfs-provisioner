@@ -4,7 +4,7 @@ Install a nf2 provisioner to enable nfs storage pvcs in kubernetes cluster.
 
 
 ```sh
-helm install --generate-name --set nfs.server=nfs-server.example.com --set nfs.path=/srv/nfs/kubedata stable/nfs-client-provisioner
+helm install nfs-provisioner  --set nfs.server=nfs-server.example.com --set nfs.path=/srv/nfs/kubedata stable/nfs-client-provisioner
 ```
 
 
