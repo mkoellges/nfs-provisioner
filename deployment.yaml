@@ -6,7 +6,7 @@ metadata:
     app: busybox
   name: busybox
 spec:
-  replicas: 1
+  replicas: 6
   selector:
     matchLabels:
       app: busybox
