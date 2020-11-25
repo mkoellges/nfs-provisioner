@@ -2,9 +2,25 @@
 
 Install a nf2 provisioner to enable nfs storage pvcs in kubernetes cluster.
 
+If you want to change values of installation chart, use the inspect command to create the values file:
+
+```sh
+helm inspect values stable/nfs-client-provisioner > nfs-provisioner.values
+```
 
 ```sh
 helm install nfs-provisioner  --set nfs.server=nfs-server.example.com --set nfs.path=/srv/nfs/kubedata stable/nfs-client-provisioner --namespace=nfs-provisioner --create-namespace
+
+# or if you want to install helm with changed values
+
+helm install nfs-provisioner  ---values ./nfs-privisioner.values --set nfs.server=nfs-server.example.com --set nfs.path=/srv/nfs/kubedata stable/nfs-client-provisioner --namespace=nfs-provisioner --create-namespace
+
+```
+
+After the installation, check your nfs installation using
+
+```sh
+kubectl get all,ing,configmap,pv,pvc --all-namespaces --selector=release=nfs-provisioner -o wide
 ```
 
 
