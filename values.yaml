@@ -1,0 +1,17 @@
+fullnameOverride: nfs-client-provisioner
+
+nodeSelector:
+  kubernetes.io/arch: arm64
+
+strategyType: Recreate
+
+storageClass:
+  name: nfs-storage
+  defaultClass: true
+  archiveOnDelete: true
+  allowVolumeExpansion: true
+  provisionerName: storage.provisioner/nfs
+
+nfs:
+  server: nfs-server.example.com
+  path: /srv/nfs/kubedata
